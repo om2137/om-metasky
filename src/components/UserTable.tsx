@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import Logout from './Logout';
 import useUserData from '@/hooks/useApi';
 import User from '@/types/userTypes';
-import SearchBar from './SearchBar';
 import Navbar from './Navbar';
 
 const UserTable: React.FC = () => {
