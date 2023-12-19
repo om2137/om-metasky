@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
+import User from '@/types/userTypes';
 
-const useUserData = (numberOfUsers = 5) => {
-  const [userData, setUserData] = useState([]);
+const useUserData = () => {
+  const [userData, setUserData] = useState<User[]>([]); 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://randomuser.me/api/?results=15`);
+        const response = await fetch(`https://randomuser.me/api/?results=30`);
         const data = await response.json();
         setUserData(data.results);
       } catch (error) {
@@ -19,9 +20,9 @@ const useUserData = (numberOfUsers = 5) => {
     };
 
     fetchUserData();
-  }, [numberOfUsers]);
+  }, []);
 
-  return { userData, loading };
+  return { userData, loading, error };
 };
 
 export default useUserData;
