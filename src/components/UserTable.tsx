@@ -40,13 +40,13 @@ const UserTable: React.FC = () => {
       // Table View
       <div className='text-start py-8'>
         <h1 className='col-span-5 text-center mb-4 text-2xl font-bold'>User Data</h1>
-        <table class="table-auto">
+        <table className="table-auto">
           <thead>
             <tr>
-              <th class="px-4 py-2">Name</th>
-              <th class="px-4 py-2">Email</th>
-              <th class="px-4 py-2">Age</th>
-              <th class="px-4 py-2">Gender</th>
+              <th className="px-4 py-2">Name</th>
+              <th className="px-4 py-2">Email</th>
+              <th className="px-4 py-2">Age</th>
+              <th className="px-4 py-2">Gender</th>
             </tr>
           </thead>
           <tbody className="text-lg">

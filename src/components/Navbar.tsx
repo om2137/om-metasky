@@ -2,11 +2,11 @@ import React from 'react';
 import Logout from './Logout';
 import Switch from '@mui/material/Switch';
 
-interface Props<T> {
-    results?: T[];
-    onChange?: React.ChangeEventHandler;
+interface Props {
+    onChange: React.ChangeEventHandler;
+    view?: any;
 }
-const Navbar = <T extends object>({onChange, view}: Props<T>): JSX.Element => {
+const Navbar = ({ onChange, view }: Props) => {
     const [checked, setChecked] = React.useState(false);
 
     const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
