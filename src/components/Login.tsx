@@ -8,11 +8,17 @@ const LoginForm: React.FC = () => {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+  const [wrongDetails, setWrongDetails] = useState(false);
 
   const handleLogin = () => {
-    dispatch(login());
-    setLoggedIn();
-    router.push('/'); 
+    if(username === 'metasky' && password === 'metasky'){
+      dispatch(login());
+      setLoggedIn();
+      router.push('/');
+    }else{
+      setWrongDetails(true);
+    }
+     
   };
 
   return (
@@ -26,7 +32,18 @@ const LoginForm: React.FC = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6">
+          {
+            wrongDetails && 
+            // wrong login cred alert
+            <div class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded relative" role="alert">
+              <strong class="font-bold">Wrong Login Details!</strong><br/>
+              <span class="block sm:inline">Check login details again.</span>
+              <button onClick={()=>setWrongDetails(false)} class="absolute top-0 bottom-0 right-0 px-4 py-3">
+                <svg class="fill-current h-6 w-6 text-red-500" role="button" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><title>Close</title><path d="M14.348 14.849a1.2 1.2 0 0 1-1.697 0L10 11.819l-2.651 3.029a1.2 1.2 0 1 1-1.697-1.697l2.758-3.15-2.759-3.152a1.2 1.2 0 1 1 1.697-1.697L10 8.183l2.651-3.031a1.2 1.2 0 1 1 1.697 1.697l-2.758 3.152 2.758 3.15a1.2 1.2 0 0 1 0 1.698z"/></svg>
+              </button>
+            </div>
+          }
+          <div className="space-y-6">
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Username
@@ -67,13 +84,13 @@ const LoginForm: React.FC = () => {
 
             <div>
               <button
-                type="submit" onClick={handleLogin}
+                onClick={handleLogin}
                 className="flex w-full justify-center rounded-md bg-gray-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-gray-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600"
               >
                 Sign in
               </button>
             </div>
-          </form>
+          </div>
         </div>
       </div>
     </div>
