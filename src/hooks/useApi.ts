@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
+import axios from 'axios';
 import User from '@/types/userTypes';
 
 const useUserData = () => {
-  const [userData, setUserData] = useState<User[]>([]); 
+  const [userData, setUserData] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
       try {
-        const response = await fetch(`https://randomuser.me/api/?results=30`);
-        const data = await response.json();
-        setUserData(data.results);
+        const response = await axios.get(`https://randomuser.me/api/?results=30`);
+        setUserData(response.data.results);
       } catch (error) {
-        console.log(error);
+        console.error('Error fetching user data:', error);
       } finally {
         setLoading(false);
       }
@@ -22,7 +21,7 @@ const useUserData = () => {
     fetchUserData();
   }, []);
 
-  return { userData, loading, error };
+  return { userData, loading };
 };
 
 export default useUserData;
