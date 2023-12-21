@@ -56,7 +56,7 @@ Redux state, including user authentication, is persisted using Redux Persist. Th
 
 ## Tech Stack
 
--   Next.js 13
+-   Next.js 14
 -   Tailwind CSS
 -   TypeScript
 -   Redux Toolkit
