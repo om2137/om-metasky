@@ -32,10 +32,11 @@ To run the app locally, follow these steps:
     
     bashCopy code
     
-    `cd om-metasky
-    npm install` 
+    `cd om-metasky`
     
-3.  Run the development server:
+    `npm install` 
+    
+4.  Run the development server:
     
     bashCopy code
     
